@@ -1,0 +1,16 @@
+---
+- hosts: localhost
+  tasks:
+  - name: create instance
+    ec2:
+      key_name: key
+      instance_type: t2.micro
+      image: ami-061145aceb14a8b16
+      wait: yes
+      region: us-east-1
+      group: SG1
+      count: 2
+      vpc_subnet_id: subnet-4b0f5617
+      assign_public_ip: yes
+      instance_tags:
+       Name: ansiblenodes
